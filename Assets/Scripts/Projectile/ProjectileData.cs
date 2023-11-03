@@ -4,6 +4,9 @@ using UnityEngine;
 public class ProjectileData : ScriptableObject
 {
 	public Sprite ProjectileImage;
-	public float Damage;
-	public float ProjectileSpeed;
+	[Min(0)]
+	public float Damage = 3f;
+	[Min(0)]
+	public float ProjectileSpeed = 3f;
+	public float RotationSpeed = 0f;
 }

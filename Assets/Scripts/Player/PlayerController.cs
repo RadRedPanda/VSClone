@@ -12,12 +12,17 @@ public class PlayerController : MonoBehaviour
 	private float _acceleration = 3f;
 
     private Rigidbody2D _rigidbody;
+
+
 	[SerializeField]
 	private ProjectileData _projectile;
     public Projectile ProjectilePrefab;
-
 	private List<Projectile> projectileObjectPool = new List<Projectile>();
+
 	private float _currentHealth;
+	[SerializeField, Tooltip("How long in between shots"), Min(0)]
+	private float _cooldown = 1f;
+	private float _lastShotTime = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +32,11 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetButtonDown("Fire1"))
+		if (Input.GetButton("Fire1") && Time.time > _lastShotTime + _cooldown)
+		{
+			_lastShotTime = Time.time;
 			fireProjectile();
+		}
 	}
 
 	void FixedUpdate()

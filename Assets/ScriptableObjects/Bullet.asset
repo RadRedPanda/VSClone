@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72585f8d55869ec418bfd7397e502210, type: 3}
   m_Name: Bullet
   m_EditorClassIdentifier: 
-  ProjectileImage: {fileID: 0}
-  Damage: 0
-  ProjectileSpeed: 0
+  ProjectileImage: {fileID: 21300000, guid: 42eac39a39bb75d44aaa5f21b3bd1e91, type: 3}
+  Damage: 3
+  ProjectileSpeed: 3
+  RotationSpeed: 314

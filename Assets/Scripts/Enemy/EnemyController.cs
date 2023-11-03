@@ -17,7 +17,6 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _currentHealth = _enemyData.MaxHealth;
     }
 
     // Update is called once per frame
@@ -51,7 +50,7 @@ public class EnemyController : MonoBehaviour
 
 	}
 
-    public void takeDamage(float amount)
+    public void TakeDamage(float amount)
     {
         _currentHealth -= amount;
         if (_currentHealth <= 0)
@@ -66,9 +65,13 @@ public class EnemyController : MonoBehaviour
         EnemyManager.enemyObjectPool.Add(this);
     }
 
-    public void setEnemyData(EnemyData data)
+    public void SetEnemyData(EnemyData data)
     {
         this._enemyData = data;
-    }
+		_currentHealth = _enemyData.MaxHealth;
+        SpriteRenderer enemySprite = GetComponent<SpriteRenderer>();
+        if (enemySprite)
+            enemySprite.sprite = _enemyData.EnemySprite;
+	}
 
 }

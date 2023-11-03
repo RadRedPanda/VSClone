@@ -4,6 +4,8 @@ using UnityEngine;
 public class EnemyData : ScriptableObject
 {
 	public Sprite EnemySprite;
-	public float MaxHealth;
+	[Min(0)]
+	public float MaxHealth = 5f;
+	[Min(0)]
 	public float MaxSpeed;
 }
