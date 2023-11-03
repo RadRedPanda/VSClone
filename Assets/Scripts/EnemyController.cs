@@ -56,11 +56,11 @@ public class EnemyController : MonoBehaviour
         _currentHealth -= amount;
         if (_currentHealth <= 0)
         {
-            die();
+            Die();
         }
     }
 
-    public void die()
+    public void Die()
     {
         gameObject.SetActive(false);
         EnemyManager.enemyObjectPool.Add(this);
