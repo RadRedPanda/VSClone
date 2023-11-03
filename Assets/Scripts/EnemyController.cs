@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -7,10 +8,10 @@ public class EnemyController : MonoBehaviour
     [SerializeField, Tooltip("How fast we want them to start moving")]
 	private float _acceleration = 3f;
 	private Rigidbody2D _rigidbody;
-    [SerializeField]
-    private Transform _playerTransform;
 
     private float _currentHealth;
+
+    public EnemyManager EnemyManager;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,7 @@ public class EnemyController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-        Vector2 movementVector = getMovementVector(_playerTransform.position);
+        Vector2 movementVector = getMovementVector(Camera.main.transform.position);
         Vector2 newVelocity = _rigidbody.velocity;
         newVelocity += movementVector * _acceleration * Time.deltaTime; // multiply it by the acceleration, accounting for time
         _rigidbody.velocity = Vector2.ClampMagnitude(newVelocity, _enemyData.MaxSpeed);
@@ -49,4 +50,25 @@ public class EnemyController : MonoBehaviour
 	{
 
 	}
+
+    public void takeDamage(float amount)
+    {
+        _currentHealth -= amount;
+        if (_currentHealth <= 0)
+        {
+            die();
+        }
+    }
+
+    public void die()
+    {
+        gameObject.SetActive(false);
+        EnemyManager.enemyObjectPool.Add(this);
+    }
+
+    public void setEnemyData(EnemyData data)
+    {
+        this._enemyData = data;
+    }
+
 }

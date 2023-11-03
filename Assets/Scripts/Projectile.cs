@@ -23,6 +23,10 @@ public class Projectile : MonoBehaviour
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		if (collision.GetComponent<EnemyController>() != null)
+		{
+			collision.GetComponent<EnemyController>().takeDamage(projectileData.Damage);
+		}
 		gameObject.SetActive(false);
 		bulletObjectPool.Add(this);
 	}
