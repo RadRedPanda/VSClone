@@ -1,21 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField, Tooltip("How fast we want them to move")]
-    private float _maxSpeed = 3f;
+    [SerializeField, Tooltip("The SO which holds the enemy data")]
+    private EnemyData _enemyData;
     [SerializeField, Tooltip("How fast we want them to start moving")]
-	private float _accleration = 3f;
+	private float _acceleration = 3f;
 	private Rigidbody2D _rigidbody;
     [SerializeField]
     private Transform _playerTransform;
+
+    private float _currentHealth;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _currentHealth = _enemyData.MaxHealth;
     }
 
     // Update is called once per frame
@@ -28,8 +29,8 @@ public class EnemyController : MonoBehaviour
 	{
         Vector2 movementVector = getMovementVector(_playerTransform.position);
         Vector2 newVelocity = _rigidbody.velocity;
-        newVelocity += movementVector * _accleration * Time.deltaTime; // multiply it by the acceleration, accounting for time
-        _rigidbody.velocity = Vector2.ClampMagnitude(newVelocity, _maxSpeed);
+        newVelocity += movementVector * _acceleration * Time.deltaTime; // multiply it by the acceleration, accounting for time
+        _rigidbody.velocity = Vector2.ClampMagnitude(newVelocity, _enemyData.MaxSpeed);
 	}
 
     /// <summary>

@@ -10,14 +10,12 @@ public class PlayerController : MonoBehaviour
 	[SerializeField, Tooltip("How fast we want them to start moving")]
 	private float _accleration = 3f;
 
-	[Header("Projectile properties")]
-	public float BulletSpeed = 7;
-
-
     private Rigidbody2D _rigidbody;
-    public GameObject BulletPrefab;
+	[SerializeField]
+	private ProjectileData _projectile;
+    public Projectile ProjectilePrefab;
 
-	private List<GameObject> bulletObjectPool = new List<GameObject>();
+	private List<Projectile> projectileObjectPool = new List<Projectile>();
 
     // Start is called before the first frame update
     void Start()
@@ -27,28 +25,8 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		if(Input.GetButtonDown("Fire1"))
-		{
-			GameObject bullet;
-			if (bulletObjectPool.Count > 0)
-			{
-				bullet = bulletObjectPool[0];
-				bullet.SetActive(true);
-				bulletObjectPool.RemoveAt(0);
-			}
-			else
-			{
-				bullet = Instantiate(BulletPrefab);
-				Bullet bulletScript = bullet.GetComponent<Bullet>();
-				bulletScript.bulletObjectPool = bulletObjectPool;
-			}
-			bullet.transform.position = transform.position;
-
-			Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
-			Vector2 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			Vector2 velocityVector = targetPosition - (Vector2)transform.position;
-			bulletRB.velocity = velocityVector.normalized * BulletSpeed;
-		}
+		if (Input.GetButtonDown("Fire1"))
+			fireProjectile();
 	}
 
 	void FixedUpdate()
@@ -58,8 +36,24 @@ public class PlayerController : MonoBehaviour
 		_rigidbody.velocity = Vector2.MoveTowards(_rigidbody.velocity, targetVelocity, _accleration * Time.deltaTime);
 	}
 
-	private void Awake()
+	private void fireProjectile()
 	{
-		
+		Projectile bullet;
+		if (projectileObjectPool.Count > 0)
+		{
+			bullet = projectileObjectPool[0];
+			bullet.gameObject.SetActive(true);
+			projectileObjectPool.RemoveAt(0);
+		}
+		else
+		{
+			bullet = Instantiate(ProjectilePrefab);
+			bullet.bulletObjectPool = projectileObjectPool;
+		}
+		bullet.projectileData = _projectile;
+		bullet.transform.position = transform.position;
+		Vector2 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		Vector2 velocityVector = targetPosition - (Vector2)transform.position;
+		bullet.FireProjectile(velocityVector.normalized);
 	}
 }
