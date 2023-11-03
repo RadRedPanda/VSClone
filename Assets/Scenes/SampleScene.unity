@@ -259,8 +259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c6b94700b16034499084eef82110d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 2
-  _accleration: 5
+  _enemyData: {fileID: 0}
+  _acceleration: 3
   _playerTransform: {fileID: 1982744203}
 --- !u!1 &519420028
 GameObject:
@@ -338,7 +338,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -622,9 +622,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 3
-  _accleration: 10
-  BulletSpeed: 7
-  BulletPrefab: {fileID: 1185873219168487740, guid: 68ded04dd66096842983d3d79e627685, type: 3}
+  _acceleration: 3
+  _projectile: {fileID: 0}
+  ProjectilePrefab: {fileID: 1544720333460606885, guid: 68ded04dd66096842983d3d79e627685, type: 3}
 --- !u!212 &1982744202
 SpriteRenderer:
   m_ObjectHideFlags: 0
