@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float Speed;
+	[Header("Player properties")]
+	[SerializeField, Tooltip("How fast we want them to move")]
+	private float _maxSpeed = 3f;
+	[SerializeField, Tooltip("How fast we want them to start moving")]
+	private float _accleration = 3f;
+
+	[Header("Projectile properties")]
 	public float BulletSpeed = 7;
-    private Rigidbody2D rigidBody;
+
+
+    private Rigidbody2D _rigidbody;
     public GameObject BulletPrefab;
 
 	private List<GameObject> bulletObjectPool = new List<GameObject>();
@@ -14,7 +22,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
 	private void Update()
@@ -43,9 +51,11 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	private void FixedUpdate()
+	void FixedUpdate()
 	{
-        rigidBody.velocity = new Vector2(Input.GetAxis("Horizontal") * Speed, rigidBody.velocity.y);
+		Vector2 targetVelocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+		targetVelocity = Vector2.ClampMagnitude(targetVelocity, 1f) * _maxSpeed;
+		_rigidbody.velocity = Vector2.MoveTowards(_rigidbody.velocity, targetVelocity, _accleration * Time.deltaTime);
 	}
 
 	private void Awake()
