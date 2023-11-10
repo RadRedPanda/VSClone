@@ -61,9 +61,8 @@ public class Projectile : MonoBehaviour
             bulletObjectPool.Add(this);
         } else if(_invulnframes <= 0)
 		{
-            //Debug.Log("Hit enemy", collision.gameObject);
-            //Debug.Log("Bullet", this.gameObject);
-            Debug.Log("Enabled = " + this.gameObject.activeSelf);
+            if (!gameObject.activeSelf || !enemyHit.gameObject.activeSelf)
+                return;
             enemyHit.TakeDamage(projectileData.Damage);
             Multiply(enemyHit);
             if (_pierce > 0)

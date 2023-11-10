@@ -70,8 +70,11 @@ public class EnemyController : MonoBehaviour
 
     public void Die()
     {
-        gameObject.SetActive(false);
-        EnemyManager.enemyObjectPool.Add(this);
+        if (gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+            EnemyManager.enemyObjectPool.Add(this);
+        }
         foreach (EnemyController enemy in EnemyManager.enemyObjectPool)
         {
             if (enemy.gameObject.activeSelf)

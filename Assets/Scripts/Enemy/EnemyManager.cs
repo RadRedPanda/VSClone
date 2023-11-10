@@ -21,7 +21,6 @@ public class EnemyManager : MonoBehaviour
         if (enemyObjectPool.Count > 0)
         {
             enemy = enemyObjectPool[0];
-            Debug.Log("Enemy active: " + enemy.gameObject.activeSelf);
             enemyObjectPool.RemoveAt(0);
         }
         else
@@ -42,7 +41,7 @@ public class EnemyManager : MonoBehaviour
 	private void Update()
 	{
         time += Time.deltaTime;
-        if (time > 2)
+        if (time > 0.1)
         {
             time = 0;
             SpawnEnemy();

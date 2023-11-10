@@ -15,6 +15,6 @@ MonoBehaviour:
   ProjectileImage: {fileID: 21300000, guid: 42eac39a39bb75d44aaa5f21b3bd1e91, type: 3}
   Damage: 3
   ProjectileSpeed: 3
-  RotationSpeed: 314
+  RotationSpeed: 1655
   Pierce: 0
-  Multiply: 0
+  Multiply: 5
