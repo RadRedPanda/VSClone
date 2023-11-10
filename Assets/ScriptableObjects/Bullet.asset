@@ -16,3 +16,5 @@ MonoBehaviour:
   Damage: 3
   ProjectileSpeed: 3
   RotationSpeed: 314
+  Pierce: 0
+  Multiply: 0

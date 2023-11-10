@@ -73,7 +73,6 @@ public class PlayerController : MonoBehaviour
 		if (projectileObjectPool.Count > 0)
 		{
 			bullet = projectileObjectPool[0];
-			bullet.gameObject.SetActive(true);
 			projectileObjectPool.RemoveAt(0);
 		}
 		else
@@ -83,8 +82,9 @@ public class PlayerController : MonoBehaviour
 		}
 		bullet.projectileData = _projectile;
 		bullet.transform.position = transform.position;
-		Vector2 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		Vector2 velocityVector = targetPosition - (Vector2)transform.position;
-		bullet.FireProjectile(velocityVector.normalized);
+        bullet.gameObject.SetActive(true);
+        Vector2 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 velocityVector = targetPosition - (Vector2)transform.position;
+		bullet.FireProjectile(velocityVector.normalized, _projectile.Pierce, _projectile.Multiply);
 	}
 }

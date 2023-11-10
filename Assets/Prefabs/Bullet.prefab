@@ -99,6 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a8036e885d5e246868bfbe9e95d915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileData: {fileID: 0}
+  ProjectilePrefab: {fileID: 1544720333460606885}
+  bulletObjectPool: []
 --- !u!58 &1788322035602968702
 CircleCollider2D:
   m_ObjectHideFlags: 0

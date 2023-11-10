@@ -63,6 +63,14 @@ public class EnemyController : MonoBehaviour
     {
         gameObject.SetActive(false);
         EnemyManager.enemyObjectPool.Add(this);
+        foreach (EnemyController enemy in EnemyManager.enemyObjectPool)
+        {
+            if (enemy.gameObject.activeSelf)
+            {
+                Debug.Log("ACTIVE ENEMY IN POOL: ", enemy);
+                Debug.Break();
+            }
+        }
     }
 
     public void SetEnemyData(EnemyData data)

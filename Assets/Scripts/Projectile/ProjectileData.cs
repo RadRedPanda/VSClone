@@ -9,6 +9,6 @@ public class ProjectileData : ScriptableObject
 	[Min(0)]
 	public float ProjectileSpeed = 3f;
 	public float RotationSpeed = 0f;
-	public int Pierce = 0;
-	public int Multiply = 1;
+	public int Pierce = 0; // How many enemies a shot will pierce through, default to none
+	public int Multiply = 0; // How many shots will fire out in random directions on hit (not including original bullet), default to none
 }

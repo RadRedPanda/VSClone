@@ -15,13 +15,13 @@ public class EnemyManager : MonoBehaviour
     {
         
     }
-
     public void SpawnEnemy()
     {
         EnemyController enemy;
         if (enemyObjectPool.Count > 0)
         {
             enemy = enemyObjectPool[0];
+            Debug.Log("Enemy active: " + enemy.gameObject.activeSelf);
             enemyObjectPool.RemoveAt(0);
         }
         else
