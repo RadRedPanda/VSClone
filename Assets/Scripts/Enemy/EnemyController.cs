@@ -50,7 +50,16 @@ public class EnemyController : MonoBehaviour
 
 	}
 
-    public void TakeDamage(float amount)
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+		if (player != null)
+		{
+            player.TakeDamage(_enemyData.ContactDamage, this);
+		}
+	}
+
+	public void TakeDamage(float amount)
     {
         _currentHealth -= amount;
         if (_currentHealth <= 0)
