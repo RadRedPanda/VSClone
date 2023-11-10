@@ -9,4 +9,6 @@ public class ProjectileData : ScriptableObject
 	[Min(0)]
 	public float ProjectileSpeed = 3f;
 	public float RotationSpeed = 0f;
+	public int Pierce = 0;
+	public int Multiply = 1;
 }
