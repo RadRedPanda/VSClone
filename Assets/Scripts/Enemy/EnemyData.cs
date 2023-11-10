@@ -8,4 +8,6 @@ public class EnemyData : ScriptableObject
 	public float MaxHealth = 5f;
 	[Min(0)]
 	public float MaxSpeed;
+	[Min(0)]
+	public float ContactDamage = 1f;
 }

@@ -6,6 +6,11 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
 	[Header("Player properties")]
+	[SerializeField, Tooltip("Player's Current Health")]
+	private FloatVariable _currentHealth;
+	[SerializeField, Tooltip("Player's Maximum Health")]
+	private FloatVariable _maxHealth;
+
 	[SerializeField, Tooltip("How fast we want them to move")]
 	private float _maxSpeed = 3f;
 	[SerializeField, Tooltip("How fast we want them to start moving")]
@@ -19,7 +24,6 @@ public class PlayerController : MonoBehaviour
     public Projectile ProjectilePrefab;
 	private List<Projectile> projectileObjectPool = new List<Projectile>();
 
-	private float _currentHealth;
 	[SerializeField, Tooltip("How long in between shots"), Min(0)]
 	private float _cooldown = 1f;
 	private float _lastShotTime = 0f;
@@ -28,6 +32,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+		_currentHealth.Value = _maxHealth.Value;
     }
 
 	private void Update()
@@ -47,14 +52,14 @@ public class PlayerController : MonoBehaviour
 	}
 
 	#region Take Damage
-	private UnityAction<float, Collider2D> _takeDamageAction;
-	public void SubscribeTakeDamage(UnityAction<float, Collider2D> action) {_takeDamageAction += action;}
-	public void UnsubscribeTakeDamage(UnityAction<float, Collider2D> action) {_takeDamageAction -= action;}
-	public void TakeDamage(float amount, Collider2D source)
+	private UnityAction<float, EnemyController> _takeDamageAction;
+	public void SubscribeTakeDamage(UnityAction<float, EnemyController> action) {_takeDamageAction += action;}
+	public void UnsubscribeTakeDamage(UnityAction<float, EnemyController> action) {_takeDamageAction -= action;}
+	public void TakeDamage(float amount, EnemyController source)
 	{
 		_takeDamageAction?.Invoke(amount, source);
-		_currentHealth -= amount;
-		if (_currentHealth <= 0)
+		_currentHealth.Value -= amount;
+		if (_currentHealth.Value <= 0)
 			Die();
 	}
 	#endregion
@@ -64,6 +69,7 @@ public class PlayerController : MonoBehaviour
 	public void UnsubscribeDie(UnityAction action) { _dieAction -= action; }
 	public void Die()
 	{
+		Debug.Log("DIED");
 		_dieAction?.Invoke();
 	}
 	#endregion
