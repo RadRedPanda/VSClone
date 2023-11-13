@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72585f8d55869ec418bfd7397e502210, type: 3}
-  m_Name: Bullet
+  m_Script: {fileID: 11500000, guid: c189f5de1823ce340ba339f1bd42a9d7, type: 3}
+  m_Name: TestCone
   m_EditorClassIdentifier: 
-  ProjectileImage: {fileID: 21300000, guid: 42eac39a39bb75d44aaa5f21b3bd1e91, type: 3}
+  Image: {fileID: 0}
   Damage: 3
   ProjectileSpeed: 3
-  RotationSpeed: 1655
+  RotationSpeed: 0
   Pierce: 0
-  Multiply: 5
+  Multiply: 0
+  Radius: 1
+  Angle: 90
