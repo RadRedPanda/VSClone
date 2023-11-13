@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c189f5de1823ce340ba339f1bd42a9d7, type: 3}
   m_Name: TestCone
   m_EditorClassIdentifier: 
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: d53a4e985707e47449e3ad10c832cc9f, type: 3}
   Damage: 3
-  ProjectileSpeed: 3
+  ProjectileSpeed: 0
   RotationSpeed: 0
   Pierce: 0
   Multiply: 0
-  Radius: 1
+  Radius: 3
   Angle: 90
