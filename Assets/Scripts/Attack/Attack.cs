@@ -9,6 +9,7 @@ public class Attack : MonoBehaviour
 	private int _pierce;
 	private int _multiply;
     private int _invulnframes = 3;
+	private float _lifespan;
 
 	void Awake()
 	{
@@ -16,8 +17,21 @@ public class Attack : MonoBehaviour
 		_sprite = GetComponent<SpriteRenderer>();
 	}
 
+	float time = 0;
     private void FixedUpdate()
     {
+		time += Time.deltaTime;
+		if (time > _lifespan)
+		{
+			time = 0;
+			AttackManager.ReturnToPool(this);
+		}
+		if (_attackData.Boomerang && time > (_lifespan / 2))
+		{
+			Vector2 targetPosition = Camera.main.transform.position;
+			Vector2 velocityVector = targetPosition - (Vector2)transform.position;
+			_rigidbody.velocity = velocityVector.normalized * _attackData.ProjectileSpeed;
+		}
         if (_invulnframes > 0)
         {
             _invulnframes--;
@@ -45,14 +59,14 @@ public class Attack : MonoBehaviour
 			float angle = Mathf.Atan2(directionVector.y, directionVector.x);
 			transform.eulerAngles = new Vector3(0, 0, Mathf.Rad2Deg * angle - 90); // assuming sprite faces up
 		}
-	}
+        _lifespan = _attackData.Boomerang ? _attackData.Lifespan * 2 : _attackData.Lifespan;
+    }
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		EnemyController enemyHit = collision.GetComponent<EnemyController>();
 		if (enemyHit == null)
 		{
-			AttackManager.ReturnToPool(this);
 			return;
 		}
 		if (!gameObject.activeSelf || !enemyHit.gameObject.activeSelf)

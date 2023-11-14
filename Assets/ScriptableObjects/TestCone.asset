@@ -18,5 +18,7 @@ MonoBehaviour:
   RotationSpeed: 0
   Pierce: 0
   Multiply: 0
-  Radius: 3
+  Boomerang: 0
+  Lifespan: 5
+  Radius: 2.99
   Angle: 90

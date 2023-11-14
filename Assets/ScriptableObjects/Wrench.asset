@@ -17,5 +17,7 @@ MonoBehaviour:
   ProjectileSpeed: 3
   RotationSpeed: 1
   Pierce: 2
-  Multiply: 8
+  Multiply: 2
+  Boomerang: 1
+  Lifespan: 2
   Radius: 0.475

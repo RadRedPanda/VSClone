@@ -12,6 +12,8 @@ public abstract class BaseAttackData : ScriptableObject
 	public int Pierce = 0;
 	[Tooltip("How many shots will fire out in random directions on hit (not including original bullet), default to none")]
 	public int Multiply = 0;
+	public bool Boomerang = false;
+	public float Lifespan = 3f;
 
 	public abstract Collider2D ApplyCollider(GameObject go);
 }
