@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class BaseAttackData : ScriptableObject
@@ -13,7 +14,9 @@ public abstract class BaseAttackData : ScriptableObject
 	[Tooltip("How many shots will fire out in random directions on hit (not including original bullet), default to none")]
 	public int Multiply = 0;
 	public bool Boomerang = false;
+	[Tooltip("Real time seconds of how long the projectile lasts, doubles if Boomerang is true")]
 	public float Lifespan = 3f;
+	public List<Vector3Int> Nodes;
 
 	public abstract Collider2D ApplyCollider(GameObject go);
 }

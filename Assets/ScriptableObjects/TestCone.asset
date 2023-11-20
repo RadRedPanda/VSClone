@@ -20,5 +20,10 @@ MonoBehaviour:
   Multiply: 0
   Boomerang: 0
   Lifespan: 5
-  Radius: 2.99
-  Angle: 90
+  Nodes:
+  - {x: 0, y: 0, z: 1}
+  - {x: 1, y: 0, z: 0}
+  - {x: 1, y: 0, z: 1}
+  - {x: -3, y: 1, z: 0}
+  Radius: 1.38
+  Angle: 80.1

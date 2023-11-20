@@ -20,4 +20,5 @@ MonoBehaviour:
   Multiply: 2
   Boomerang: 1
   Lifespan: 2
+  Nodes: []
   Radius: 0.475

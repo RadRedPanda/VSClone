@@ -622,7 +622,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   EnemyPrefab: {fileID: 8390935778097746902, guid: 3fdec13ad8d4c2c4598389d32cf5b08f, type: 3}
   _enemyData: {fileID: 11400000, guid: db8170e6f40ca7e4ba76cc4c5052bd6a, type: 2}
   enemyObjectPool: []
-  _bufferDistance: 10
+  _bufferDistance: 0.6
 --- !u!4 &1274502390
 Transform:
   m_ObjectHideFlags: 0
