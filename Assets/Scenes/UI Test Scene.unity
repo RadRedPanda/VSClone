@@ -241,6 +241,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hexagonPrefab: {fileID: 5144538733357529137, guid: b14001b3605d55142909958aecf2e89d, type: 3}
+  _baseNodePrefab: {fileID: 5297461611125842900, guid: a7843eb3fe405b043be23e09fad00349, type: 3}
+  _emptyNodePrefab: {fileID: 5211829460686425572, guid: 899bf120ed87a8949ad5ebace976a93e, type: 3}
+  _connectionPrefab: {fileID: 9125437576402043752, guid: d33fa15d9c680784e85a368a3904b57d, type: 3}
+  TESTDATA: {fileID: 11400000, guid: 5e56495d13183e34c9a59ab40e48ab9e, type: 2}
   _rows: 7
   _columns: 20
   Distance: 100
